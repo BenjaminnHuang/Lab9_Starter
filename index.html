@@ -47,6 +47,14 @@
       width: 122px;
     }
   </style>
+
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+    token: "a709bfa640ff4545b736e3a0b4d352c9"
+    // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
 </head>
 
 <body>
@@ -88,6 +96,9 @@
   </main>
 
   <script>
+
+    TrackJS.track('Testing TrackJS!');
+
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -97,10 +108,14 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
+
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
       }
       catch(err){
         console.log('Please enter valid numbers for the input.');
+      }
+      finally{
+        console.log('End of the debugging!')
       }
     });
 
@@ -169,8 +184,14 @@
           birthday: '1977/11/16',
         }
       ];
-
+        
       console.table(people);
+      
+      for(p in people){
+        if(p.birthday == null){
+          throw new SyntaxError('There is no birthday data for this person!');
+        }
+      }
     });
 
     const Timer = 'Timer Button';
@@ -195,6 +216,12 @@
       console.error(unknown);
     });
 
+  class SyntaxError extends Error{
+    constructor(message){
+      super(message);
+      this.name = 'SyntaxError';
+    }
+  }
 
   </script>
 </body>
