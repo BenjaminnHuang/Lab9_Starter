@@ -1,2 +1,2 @@
 # Lab 9 - Starter
-[Likn](https://benjaminnhuang.github.io/Lab9_Starter/)
+[Link](https://benjaminnhuang.github.io/Lab9_Starter/)
